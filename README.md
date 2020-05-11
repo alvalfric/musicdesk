@@ -1,2 +1,2 @@
-# MusicDesk
-Aplicación desarrollada para la asignatura de AISS por Álvaro Jesús Alférez Richarte
+# lab5-myfirstmashup
+Material práctica 5 AISS: Consumo de servicios RESTful (I)

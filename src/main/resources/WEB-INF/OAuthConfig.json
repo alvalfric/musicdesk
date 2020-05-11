@@ -5,5 +5,12 @@
         "clientSecret": "3887a400724a4335bc13add43cf2a354",
         "authorizationFormUrl": "https://accounts.spotify.com/authorize",
         "scopes": ["playlist-read-private", "playlist-modify-public", "streaming", "user-read-email", "user-read-private"]
+    },
+    "Youtube": {
+        "tokenUrl": "https://accounts.google.com/o/oauth2/token",
+        "clientId": "682572655833-jn6pum8hup4ccakshrbma1k87sr1evu5.apps.googleusercontent.com",
+        "clientSecret": "FqWVOGY88BXZMI4wltSqt4Fn",
+        "authorizationFormUrl": "https://accounts.google.com/o/oauth2/auth",
+        "scopes": ["https://www.googleapis.com/auth/youtube.force-ssl"]
     }
 }		

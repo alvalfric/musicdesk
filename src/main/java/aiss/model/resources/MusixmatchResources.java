@@ -30,6 +30,7 @@ public class MusixmatchResources {
 		ObjectMapper objectMapper = new ObjectMapper();
 
 		SongSearch searchSong = objectMapper.readValue(cr.get(String.class), SongSearch.class);
+		System.out.println("problemaasdf"+uri);
 
 		return searchSong;
 	}
@@ -39,7 +40,7 @@ public class MusixmatchResources {
 		String uri = "https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id="
 				+ URLEncoder.encode(String.valueOf(songId), "UTF-8") + "&apikey="
 				+ MusixmatchResources.MUSIXMATCH_API_KEY;
-
+		
 		MusixmatchResources.log.log(Level.FINE, "Musixmatch Lyrics URI: " + uri);
 
 		ClientResource cr = new ClientResource(uri);

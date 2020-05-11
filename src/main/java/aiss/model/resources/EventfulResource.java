@@ -32,10 +32,6 @@ public class EventfulResource {
 		
 		EventSearch eventSearch = objectMapper.readValue(cr.get(String.class), EventSearch.class);
 
-		for(Event event: eventSearch.getEvents().getEvent()) {
-			System.out.println(event.getcity_name()+" - "+event.getUrl());
-		}
-		
 		return eventSearch;
 	}
 
