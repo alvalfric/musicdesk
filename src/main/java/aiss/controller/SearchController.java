@@ -95,9 +95,7 @@ public class SearchController extends HttpServlet {
 						request.setAttribute("lyrics", "Lyrics not found D:");
 					}
 				} else {
-					System.out.println("entranolyrics");
 					request.setAttribute("hasLyrics", false);
-
 				}
 
 				// Search for events in Eventful

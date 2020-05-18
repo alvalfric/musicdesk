@@ -30,7 +30,6 @@ public class MusixmatchResources {
 		ObjectMapper objectMapper = new ObjectMapper();
 
 		SongSearch searchSong = objectMapper.readValue(cr.get(String.class), SongSearch.class);
-		System.out.println("problemaasdf"+uri);
 
 		return searchSong;
 	}

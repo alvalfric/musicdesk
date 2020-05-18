@@ -16,7 +16,7 @@ import aiss.model.spotify.search.SearchSpotify;
 
 public class SpotifyTest {
 
-	private String accessToken = "BQAAkfcmndIjlDSeITskeXyEY02hDnwex_nGaOC9KYoysGb5WnyVXN6_oFmNy2_U1wVjlfa3gPgQ0sTgW3YAC6auHgerBBpH57yY5tkJ1SSLRHRzgZT0w1_-ZaEyC761b0QWc1thovpwr4l045sCKKdurXDX7kAPoTA";
+	private String accessToken = "BQBxEFyb4hxMGIMRcTU76dxxCrnNarv90uko6B_60CTfS3DSmBB3hi5JyBp5PIKL4fvEXNxXUhXvgrsIt3Oj5GO9rhS0go0oe0NhrTIy-JBi5Llnc6qdvlClNXHA5O_iRrSxoU0rTwCo7V-KsNsvL6vLLcvO4vq0nHY";
 
 	@Test
 	public void getTrackTest() throws UnsupportedEncodingException {
