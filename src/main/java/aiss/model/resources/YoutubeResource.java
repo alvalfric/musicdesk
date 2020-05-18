@@ -53,12 +53,12 @@ public class YoutubeResource {
 	}
 
 	public YoutubeCommentThread getCommets(String videoId) throws UnsupportedEncodingException {
-		//add order=relevance to order by popularity
+		// add order=relevance to order by popularity
 		String uri = baseURL + "commentThreads?part=snippet&maxResults=10&videoId="
 				+ URLEncoder.encode(videoId, "UTF-8") + "&key=" + YOUTUBE_API_KEY;
 
 		YoutubeResource.log.log(Level.FINE, "Youtube Comments URI: " + uri);
-System.out.println("youtubecommenturi"+uri);
+
 		ClientResource cr = new ClientResource(uri);
 		YoutubeCommentThread commentThread = cr.get(YoutubeCommentThread.class);
 
@@ -80,7 +80,7 @@ System.out.println("youtubecommenturi"+uri);
 		if (channelId != null && !comment.trim().isEmpty() && !videoId.isEmpty() && videoId != null) {
 			String commentPostUrl = baseURL + "commentThreads?part=snippet&maxResults=10&order=relevance&videoId="
 					+ URLEncoder.encode(videoId, "UTF-8") + "&key=" + YOUTUBE_API_KEY;
-			
+
 			ClientResource cr = new ClientResource(commentPostUrl);
 			ChallengeResponse chr = new ChallengeResponse(ChallengeScheme.HTTP_OAUTH_BEARER);
 
@@ -88,7 +88,7 @@ System.out.println("youtubecommenturi"+uri);
 			cr.setChallengeResponse(chr);
 
 			CommentThread ct = new CommentThread();
-			// ct.getSnippet().setChannelId("");
+
 			Snippet snippet = new Snippet();
 			TopLevelComment tlc = new TopLevelComment();
 			Snippet_ snippet_ = new Snippet_();
@@ -102,8 +102,7 @@ System.out.println("youtubecommenturi"+uri);
 			ct.getSnippet().setVideoId(videoId);
 			ct.getSnippet().setChannelId(channelId);
 
-			// log.info("Creating new comment with description '" + comment + "' and userId
-			// '" + userId + "'");
+			log.info("Creating new comment with descripcion " + comment + " and channelId " + getChannelId());
 
 			try {
 				cr.post(ct, MediaType.APPLICATION_ALL_JSON);

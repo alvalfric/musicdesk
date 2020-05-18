@@ -1,18 +1,17 @@
 package aiss.model.resources;
 
-import aiss.model.spotify.NewPlaylist;
-import aiss.model.spotify.Playlists;
-import aiss.model.spotify.UserProfile;
-import aiss.model.spotify.search.SearchSpotify;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.logging.Logger;
+
 import org.restlet.data.ChallengeResponse;
 import org.restlet.data.ChallengeScheme;
-import org.restlet.data.MediaType;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
+
+import aiss.model.spotify.Playlists;
+import aiss.model.spotify.UserProfile;
+import aiss.model.spotify.search.SearchSpotify;
 
 public class SpotifyResource {
 
@@ -34,11 +33,12 @@ public class SpotifyResource {
         cr.setChallengeResponse(chr);
 
         SearchSpotify searhSpority = null;
+        
         try {
         	searhSpority = cr.get(SearchSpotify.class);
             return searhSpority;
         } catch (ResourceException re) {
-            log.warning("Error when retrieving Spotify playlists: " + cr.getResponse().getStatus());
+            log.warning("Error when retrieving Spotify track: " + cr.getResponse().getStatus());
             log.warning(trackGetURL);
             return null;
         }
@@ -53,6 +53,7 @@ public class SpotifyResource {
         cr.setChallengeResponse(chr);
 
         Playlists playlists = null;
+        
         try {
             playlists = cr.get(Playlists.class);
             return playlists;

@@ -66,13 +66,15 @@ html, body {
 				</div>
 				<div class="container mt-3">
 					<div class="media border p-2 bg-light">
-						<c:if
-							test='${sessionScope["Youtube-token"] == null || sessionScope["Youtube-token"] == ""}'>
-							<a href="/AuthController/Youtube" class="spotify fixedlogin btn">
-								<i class="fa youtube fa-fw"></i><span class="">Conectarse
-									a Youtube</span>
-							</a>
-						</c:if>
+						<div  style="background:#e63946;">
+							<c:if
+								test='${sessionScope["Youtube-token"] == null || sessionScope["Youtube-token"] == ""}'>
+								<a href="/AuthController/Youtube" class="spotify fixedlogin btn">
+									<i class="fa youtube fa-fw"></i><span style="color:white">Conectarse
+										a Youtube</span>
+								</a>
+							</c:if>
+						</div>
 						<c:if
 							test='${sessionScope["Youtube-token"] != null && sessionScope["Youtube-token"] != ""}'>
 
@@ -105,11 +107,12 @@ html, body {
 								style="width: 60px;">
 							<div class="media-body">
 								<h4>
-									<a href='<c:out value="${comment.snippet.topLevelComment.snippet.authorChannelUrl}"/>' style="color:black;;">
-									<c:out value="${comment.snippet.topLevelComment.snippet.authorDisplayName}"></c:out>
-									</a>
-									<small><i>Publicado el
-											<c:out value="${comment.snippet.topLevelComment.snippet.publishedAt}"/></i></small>
+									<a
+										href='<c:out value="${comment.snippet.topLevelComment.snippet.authorChannelUrl}"/>'
+										style="color: black;"> <c:out
+											value="${comment.snippet.topLevelComment.snippet.authorDisplayName}"></c:out>
+									</a> <small><i>Publicado el <c:out
+												value="${comment.snippet.topLevelComment.snippet.publishedAt}" /></i></small>
 								</h4>
 								<p>${comment.snippet.topLevelComment.snippet.textDisplay}</p>
 							</div>

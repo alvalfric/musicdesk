@@ -169,8 +169,8 @@ body, html {
 <body>
 	<c:if
 		test='${sessionScope["Spotify-token"] == null || sessionScope["Spotify-token"] == ""}'>
-		<a href="" class="spotify fixedlogin btn">
-			<i class="fa fa-spotify fa-fw"></i> <span class="spotify-full-text">Require
+		<a href="" class="spotify fixedlogin btn"> <i
+			class="fa fa-spotify fa-fw"></i> <span class="spotify-full-text">Require
 				Spotify</span> <span class="spotify-short-text">Log in</span>
 		</a>
 	</c:if>
@@ -204,6 +204,12 @@ body, html {
 				</div>
 			</div>
 		</form>
+		<br>
+		<div class="d-flex justify-content-center">
+			<a href="https://eventbook-aiss.ew.r.appspot.com/docs/"> <i class="fas fa-seedling" style="color:#da4a54;"></i> <span
+				style="color: black;">Prueba nuestra API de eventos</span>
+			</a>
+		</div>
 	</div>
 	<a href="info.html"> <i id="fixedbutton" class="far fa-file-alt"></i></a>
 </body>

@@ -48,38 +48,6 @@
 	</error-page>
 
 	<!-- WEBAPP SERVLETS -->
-	<!-- Google Drive files - retrieve -->
-	<!-- Spotify playlists - retrieve -->
-	<servlet>
-		<servlet-name>SpotifyPlaylistsGetController</servlet-name>
-		<servlet-class>aiss.controller.SpotifyPlaylistsGetController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>SpotifyPlaylistsGetController</servlet-name>
-		<url-pattern>/spotifyPlaylistsGet</url-pattern>
-	</servlet-mapping>
-	<!-- Spotify playlist - create -->
-	<servlet>
-		<servlet-name>SpotifyPlaylistNewController</servlet-name>
-		<servlet-class>aiss.controller.SpotifyPlaylistNewController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>SpotifyPlaylistNewController</servlet-name>
-		<url-pattern>/spotifyPlaylistNew</url-pattern>
-	</servlet-mapping>
-	<!-- OAUTH SERVLETS For each OAuth 2.0 service, you need to create two servlets: 
-		one for the initiation and another for the callback. After sucess the token 
-		for the provider will be available in the session scope under the name <provider>-token. 
-		E.g.: Spotify-token. Those servlets support 2 parameters: - provider: which 
-		is mandatory and specifies the configuration from the OAuthConfig.json file 
-		which will be applied. - onSuccess: which is optional specifies the behaviour 
-		of the servlet after an successful authorization. If you specify close as 
-		the value of the parameter, the page will close. If you specify redirect:XXXX, 
-		the page will be redirected to XXXX. WARNING: The url-patterns of all the 
-		servlets mus be disjoint. Our recommendation is that if you expecify X as 
-		the provider, the url-pattern of the initiation servlet could be /AuthController/X, 
-		and the url-pattern of the callback servlet must be /oauth2callback/X. -->
-
 	<!-- Spotify oAuth2 servlets -->
 	<!-- SpotifyAuthController -->
 	<servlet>

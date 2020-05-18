@@ -175,11 +175,9 @@ body, html {
 		<form id="searchForm" action="SearchController" method="post">
 			<div class="d-flex justify-content-center">
 				<div class="searchbar">
-					<body>
-						<h3>
-							Search failed, please <a href="/index.jsp">try again </a>.
-						</h3>
-					</body>
+					<h3>
+						Search failed, please <a href="/index.jsp">try again </a>.
+					</h3>
 				</div>
 			</div>
 		</form>
