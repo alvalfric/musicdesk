@@ -1,6 +1,9 @@
 package aiss.controller;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -10,18 +13,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.appengine.repackaged.com.google.common.collect.BiMap;
-
-import aiss.model.eventful.EventSearch;
 import aiss.model.musixmatch.lyrics.LyricSearch;
 import aiss.model.musixmatch.track.SongSearch;
 import aiss.model.musixmatch.track.TrackList;
-import aiss.model.resources.EventfulResource;
 import aiss.model.resources.MusixmatchResources;
 import aiss.model.resources.SpotifyResource;
 import aiss.model.resources.YoutubeResource;
 import aiss.model.spotify.Playlists;
-import aiss.model.spotify.search.SearchSpority;
+import aiss.model.spotify.search.SearchSpotify;
+import aiss.model.youtube.commentthread.list.Item;
 import aiss.model.youtube.commentthread.list.YoutubeCommentThread;
 import aiss.model.youtube.search.YoutubeSearch;
 
@@ -55,14 +55,14 @@ public class VideoController extends HttpServlet {
 		RequestDispatcher rd = null;
 
 		request.setAttribute("query", query);
-		System.out.println("queryxd" + query);
+
 		String accessToken = (String) request.getSession().getAttribute("Spotify-token");
 
 		if (accessToken != null && !"".equals(accessToken)) {
 			String youtubeToken = (String) request.getSession().getAttribute("Youtube-token");
 
 			SpotifyResource spResource = new SpotifyResource(accessToken);
-			SearchSpority searchSpotify = spResource.getTrack(query);
+			SearchSpotify searchSpotify = spResource.getTrack(query);
 
 			if (searchSpotify != null && searchSpotify.getTracks() != null
 					&& searchSpotify.getTracks().getItems().size() > 0
@@ -99,9 +99,7 @@ public class VideoController extends HttpServlet {
 						request.setAttribute("lyrics", "Lyrics not found D:");
 					}
 				} else {
-					System.out.println("entranolyrics");
 					request.setAttribute("hasLyrics", false);
-
 				}
 
 				SpotifyResource asdf = new SpotifyResource(accessToken);
@@ -115,6 +113,15 @@ public class VideoController extends HttpServlet {
 
 				YoutubeCommentThread youtubeCommentThreadResults = youtubeSearch
 						.getCommets(youtubeSearchResults.getItems().get(0).getId().getVideoId());
+				
+				for(Item comment : youtubeCommentThreadResults.getItems()) {
+					Locale spanish = new Locale("es", "ES");
+					DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'", spanish);
+					LocalDateTime date = LocalDateTime.parse(comment.getSnippet().getTopLevelComment().getSnippet().getPublishedAt(), inputFormatter);
+					String dateFormatted = date.format(DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy, HH:mm", spanish)).toString();
+					comment.getSnippet().getTopLevelComment().getSnippet().setPublishedAt(dateFormatted);
+				}
+				
 				request.setAttribute("youtubeCommentThread", youtubeCommentThreadResults);
 
 				request.getRequestDispatcher("/video.jsp").forward(request, response);

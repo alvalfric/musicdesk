@@ -20,7 +20,7 @@ import aiss.model.resources.EventfulResource;
 import aiss.model.resources.MusixmatchResources;
 import aiss.model.resources.SpotifyResource;
 import aiss.model.spotify.Playlists;
-import aiss.model.spotify.search.SearchSpority;
+import aiss.model.spotify.search.SearchSpotify;
 
 /**
  * Servlet implementation class SearchController
@@ -51,7 +51,7 @@ public class AlbumViewController extends HttpServlet {
 
 		if (accessToken != null && !"".equals(accessToken)) {
 			SpotifyResource spResource = new SpotifyResource(accessToken);
-			SearchSpority searchSpotify = spResource.getTrack(query);
+			SearchSpotify searchSpotify = spResource.getTrack(query);
 
 			if (searchSpotify != null && searchSpotify.getTracks() != null
 					&& searchSpotify.getTracks().getItems().size() > 0

@@ -3,7 +3,7 @@ package aiss.model.resources;
 import aiss.model.spotify.NewPlaylist;
 import aiss.model.spotify.Playlists;
 import aiss.model.spotify.UserProfile;
-import aiss.model.spotify.search.SearchSpority;
+import aiss.model.spotify.search.SearchSpotify;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -25,7 +25,7 @@ public class SpotifyResource {
         this.access_token = access_token;
     }
     
-    public SearchSpority getTrack(String query) throws UnsupportedEncodingException {
+    public SearchSpotify getTrack(String query) throws UnsupportedEncodingException {
         String trackGetURL = baseURL + "/search?q="+ URLEncoder.encode(query, "UTF-8") +"&type=track&market=ES&limit=1";
         ClientResource cr = new ClientResource(trackGetURL);
         
@@ -33,12 +33,10 @@ public class SpotifyResource {
         chr.setRawValue(access_token);
         cr.setChallengeResponse(chr);
 
-        System.out.println("tracksearch"+trackGetURL);
-        SearchSpority searhSpority = null;
+        SearchSpotify searhSpority = null;
         try {
-        	searhSpority = cr.get(SearchSpority.class);
+        	searhSpority = cr.get(SearchSpotify.class);
             return searhSpority;
-
         } catch (ResourceException re) {
             log.warning("Error when retrieving Spotify playlists: " + cr.getResponse().getStatus());
             log.warning(trackGetURL);
@@ -58,42 +56,10 @@ public class SpotifyResource {
         try {
             playlists = cr.get(Playlists.class);
             return playlists;
-
         } catch (ResourceException re) {
             log.warning("Error when retrieving Spotify playlists: " + cr.getResponse().getStatus());
             log.warning(playlistsGetURL);
             return null;
-        }
-    }
-
-    public boolean createPlaylist(String name, String description) {
-        String userId = this.getUserId();
-        if (userId != null && !name.trim().isEmpty()) {
-            String playlistPostURL = baseURL + "/users/" + userId + "/playlists";
-            ClientResource cr = new ClientResource(playlistPostURL);
-
-            ChallengeResponse chr = new ChallengeResponse(ChallengeScheme.HTTP_OAUTH_BEARER);
-            chr.setRawValue(access_token);
-            cr.setChallengeResponse(chr);
-
-            NewPlaylist p = new NewPlaylist();
-            p.setName(name);
-            p.setDescription(description);
-
-            log.info("Creating new playlist with name '" + name + "', description '" + description + "' and userId '" + userId + "'");
-
-            try {
-                cr.post(p, MediaType.APPLICATION_ALL_JSON);
-                return true;
-
-            } catch (ResourceException re) {
-                log.warning("Error when creating a Spotify playlist: " + cr.getResponse().getStatus());
-                log.warning(playlistPostURL);
-                return false;
-            }
-        } else {
-            log.warning("Error when getting userID from Spotify");
-            return false;
         }
     }
 
@@ -109,7 +75,6 @@ public class SpotifyResource {
 
         try {
             return cr.get(UserProfile.class).getId();
-
         } catch (ResourceException re) {
             log.warning("Error when retrieving the user profile: " + cr.getResponse().getStatus());
             log.warning(userProfileURL);

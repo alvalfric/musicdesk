@@ -33,6 +33,8 @@ public class YoutubeCommentNewController extends HttpServlet {
 
 				youtubeResource.addComment(comment, req.getParameter("videoId"));
 
+				req.setAttribute("comment", null);
+				
 				req.getRequestDispatcher("/video").forward(req, resp);
 			} else {
 				log.info("Trying to access Youtube without an access token, redirecting to OAuth servlet");

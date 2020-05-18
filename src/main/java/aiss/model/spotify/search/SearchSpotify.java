@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
     "tracks"
 })
-public class SearchSpority {
+public class SearchSpotify {
 
     @JsonProperty("tracks")
     private Tracks tracks;

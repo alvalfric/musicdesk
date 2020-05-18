@@ -58,7 +58,7 @@ public class YoutubeResource {
 				+ URLEncoder.encode(videoId, "UTF-8") + "&key=" + YOUTUBE_API_KEY;
 
 		YoutubeResource.log.log(Level.FINE, "Youtube Comments URI: " + uri);
-
+System.out.println("youtubecommenturi"+uri);
 		ClientResource cr = new ClientResource(uri);
 		YoutubeCommentThread commentThread = cr.get(YoutubeCommentThread.class);
 

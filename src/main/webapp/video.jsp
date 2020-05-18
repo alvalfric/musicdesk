@@ -105,10 +105,11 @@ html, body {
 								style="width: 60px;">
 							<div class="media-body">
 								<h4>
-									<c:out
-										value="${comment.snippet.topLevelComment.snippet.authorDisplayName}"></c:out>
-									<small><i>Posted on
-											${comment.snippet.topLevelComment.snippet.publishedAt}</i></small>
+									<a href='<c:out value="${comment.snippet.topLevelComment.snippet.authorChannelUrl}"/>' style="color:black;;">
+									<c:out value="${comment.snippet.topLevelComment.snippet.authorDisplayName}"></c:out>
+									</a>
+									<small><i>Publicado el
+											<c:out value="${comment.snippet.topLevelComment.snippet.publishedAt}"/></i></small>
 								</h4>
 								<p>${comment.snippet.topLevelComment.snippet.textDisplay}</p>
 							</div>
@@ -144,7 +145,6 @@ html, body {
 									<c:out value="${artistaCancion} - ${tituloCancion}" />
 									<br> <br>
 								</legend>
-								${lyrics}
 							</fieldset>
 						</c:if>
 					</div>

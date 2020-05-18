@@ -61,7 +61,7 @@ html, body {
 						<c:if test="${hasLyrics != true}">
 							<fieldset id="lyrics">
 								<legend>
-									No se han encontrado Lyrics para 
+									No se han encontrado Lyrics para
 									<c:out value="${artistaCancion} - ${tituloCancion}" />
 									<br> <br>
 								</legend>
@@ -85,19 +85,24 @@ html, body {
 				</fieldset>
 				<fieldset id="playlist-fieldset">
 					<legend> Mis Playlists </legend>
-					<script type="text/javascript" src="changePlaylist.js"></script>
-					<select id="playlist-select" style="width: 100%; height: 38px;">
-						<c:forEach items="${playlists.items}" var="playlist">
-							<option
-								value="https://open.spotify.com/embed/playlist/${playlist.id}"><c:out
-									value="${playlist.name}" /></option>
-						</c:forEach>
-					</select>
-					</td>
-					<iframe id="playlist"
-						src="https://open.spotify.com/embed/playlist/${playlists.getItems().get(0).getId()}"
-						width="100%" height="380" frameborder="0" allowtransparency="true"
-						allow="encrypted-media"></iframe>
+					<c:if test="${hasPlaylists == true}">
+						<script type="text/javascript" src="changePlaylist.js"></script>
+						<select id="playlist-select" style="width: 100%; height: 38px;">
+							<c:forEach items="${playlists.items}" var="playlist">
+								<option
+									value="https://open.spotify.com/embed/playlist/${playlist.id}"><c:out
+										value="${playlist.name}" /></option>
+							</c:forEach>
+						</select>
+						</td>
+						<iframe id="playlist"
+							src="https://open.spotify.com/embed/playlist/${playlists.getItems().get(0).getId()}"
+							width="100%" height="380" frameborder="0"
+							allowtransparency="true" allow="encrypted-media"></iframe>
+					</c:if>
+					<c:if test="${hasPlaylists == false}">
+						<p>No se ha encontrado ninguna playlist.</p>
+					</c:if>
 				</fieldset>
 				<br>
 			</div>

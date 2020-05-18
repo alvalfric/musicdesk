@@ -10,19 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.appengine.repackaged.com.google.common.collect.BiMap;
-
-import aiss.model.eventful.EventSearch;
 import aiss.model.musixmatch.lyrics.LyricSearch;
 import aiss.model.musixmatch.track.SongSearch;
 import aiss.model.musixmatch.track.TrackList;
-import aiss.model.resources.EventfulResource;
 import aiss.model.resources.MusixmatchResources;
 import aiss.model.resources.SpotifyResource;
-import aiss.model.resources.YoutubeResource;
 import aiss.model.spotify.Playlists;
-import aiss.model.spotify.search.SearchSpority;
-import aiss.model.youtube.search.YoutubeSearch;
+import aiss.model.spotify.search.SearchSpotify;
 
 /**
  * Servlet implementation class SearchController
@@ -55,7 +49,7 @@ public class PlaylistController extends HttpServlet {
 
 		if (accessToken != null && !"".equals(accessToken)) {
 			SpotifyResource spResource = new SpotifyResource(accessToken);
-			SearchSpority searchSpotify = spResource.getTrack(query);
+			SearchSpotify searchSpotify = spResource.getTrack(query);
 
 			if (searchSpotify != null && searchSpotify.getTracks() != null
 					&& searchSpotify.getTracks().getItems().size() > 0
@@ -63,8 +57,14 @@ public class PlaylistController extends HttpServlet {
 
 				request.setAttribute("searchSpotify", searchSpotify);
 				Playlists playlists = spResource.getPlaylists();
-				request.setAttribute("playlists", playlists);
 
+				if (playlists.getTotal() != 0) {
+					request.setAttribute("hasPlaylists", true);
+					request.setAttribute("playlists", playlists);
+				} else {
+					request.setAttribute("hasPlaylists", false);
+				}
+				
 				String tituloCancion = searchSpotify.getTracks().getItems().get(0).getName();
 				String artistaCancion = searchSpotify.getTracks().getItems().get(0).getArtists().get(0).getName();
 				request.setAttribute("tituloCancion", tituloCancion);

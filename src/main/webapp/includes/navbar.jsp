@@ -9,7 +9,7 @@
 
 	<div class="collapse navbar-collapse" id="navb">
 		<ul class="navbar-nav mr-auto">
-			<form id="lyricsForm" action="SearchController" method="post">
+			<form id="lyricsForm" action="lyrics" method="post">
 				<input type="hidden" name="searchQuery" required value="${query}" />
 				<li class="nav-item" onclick="lyricsForm.submit();"><a
 					class="nav-link" href="javascript:void(0)">Lyrics</a></li>
@@ -23,10 +23,10 @@
 			<form id="videoForm" action="video" method="post">
 				<input type="hidden" name="searchQuery" required value="${query}" />
 				<li class="nav-item" onclick="videoForm.submit();"><a
-					class="nav-link" href="javascript:void(0)">Video(WIP)</a></li>
+					class="nav-link" href="javascript:void(0)">Video</a></li>
 			</form>
 		</ul>
-		<form id="searchForm" action="SearchController" method="post"
+		<form id="searchForm" action="lyrics" method="post"
 			class="form-inline my-2 my-lg-0">
 			<input class="form-control mr-sm-2" type="text" name="searchQuery"
 				placeholder="Buscar canción, artista..." required />
