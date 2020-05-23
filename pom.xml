@@ -232,6 +232,20 @@
 				</executions>
 			</plugin>
 
+			<!-- Aqui se excluyen los archivos acabados en UITest.java y APITest.java 
+				durante la ejecucion -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>**/*SpotifyTest.java</exclude>
+						<exclude>**/*YoutubeTest.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
 			<!-- Hot reload of Java and static files -->
 			<!-- http://stackoverflow.com/questions/21345177/is-there-any-way-to-trigger-the-maven-appengine-devserver-to-auto-refresh-static -->
 			<plugin>

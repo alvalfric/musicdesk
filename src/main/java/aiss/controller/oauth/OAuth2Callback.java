@@ -42,7 +42,6 @@ public class OAuth2Callback extends AbstractAuthorizationCodeCallbackServlet {
     protected String getRedirectUri(HttpServletRequest req) throws ServletException, IOException {
 
         GenericUrl url = new GenericUrl(req.getRequestURL().toString());
-        System.out.println("url logging spotify"+url);
         url.setRawPath("/oauth2callback/" + getInitParameter("provider"));
         return url.build();
     }

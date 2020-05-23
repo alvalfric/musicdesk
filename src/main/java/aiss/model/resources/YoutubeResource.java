@@ -65,7 +65,6 @@ public class YoutubeResource {
 		try {
 			commentThread = cr.get(YoutubeCommentThread.class);
 			return commentThread;
-
 		} catch (ResourceException re) {
 			log.warning("Error when retrieving Youtube Comment search: " + cr.getResponse().getStatus());
 			log.warning(uri);
@@ -73,7 +72,7 @@ public class YoutubeResource {
 		}
 	}
 
-	public boolean addComment(String comment, /* String channelId, */ String videoId)
+	public boolean addComment(String comment, String videoId)
 			throws UnsupportedEncodingException {
 
 		String channelId = this.getChannelId();
@@ -114,7 +113,7 @@ public class YoutubeResource {
 				return false;
 			}
 		} else {
-			log.warning("Error when getting userID from Spotify");
+			log.warning("Error when getting userID from Youtube");
 			return false;
 		}
 	}

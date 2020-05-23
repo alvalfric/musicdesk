@@ -4,7 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>MusicDesk Search</title>
+<title>MusicDesk Error</title>
+<link rel="icon" type="image/png" href="cassette.png"
+	sizes="32x32" />
+<link rel="icon" type="image/png" href="cassette.png"
+	sizes="16x16" />
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
@@ -176,7 +180,7 @@ body, html {
 			<div class="d-flex justify-content-center">
 				<div class="searchbar">
 					<h3>
-						Search failed, please <a href="/index.jsp">try again </a>.
+						La búsqueda falló, por favor <a href="/index.jsp">inténtelo de nuevo </a>.
 					</h3>
 				</div>
 			</div>

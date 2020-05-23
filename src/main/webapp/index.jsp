@@ -4,7 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>MusicDesk Search</title>
+<title>MusicDesk</title>
+<link rel="icon" type="image/png" href="cassette.png"
+	sizes="32x32" />
+<link rel="icon" type="image/png" href="cassette.png"
+	sizes="16x16" />
+<link rel="icon" type="image/png" href="cassette.png"
+	sizes="32x32" />
+<link rel="icon" type="image/png" href="cassette.png"
+	sizes="16x16" />
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
@@ -206,7 +214,8 @@ body, html {
 		</form>
 		<br>
 		<div class="d-flex justify-content-center">
-			<a href="https://eventbook-aiss.ew.r.appspot.com/docs/"> <i class="fas fa-seedling" style="color:#da4a54;"></i> <span
+			<a href="https://eventbook-aiss.ew.r.appspot.com/docs/"> <i
+				class="fas fa-seedling" style="color: #da4a54;"></i> <span
 				style="color: black;">Prueba nuestra API de eventos</span>
 			</a>
 		</div>
