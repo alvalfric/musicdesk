@@ -1,2 +1,2 @@
-# lab5-myfirstmashup
-Material práctica 5 AISS: Consumo de servicios RESTful (I)
+# MusicDesk
+MusicDesk is a music based application developed by Alvaro Jesus Alferez Richarte for the subject AISS.
